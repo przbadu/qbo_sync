@@ -6,26 +6,31 @@ import DashboardLayout from "./layouts/DashboardLayout";
 import MainLayout from "./layouts/MainLayout";
 // components
 import CustomerListView from "./views/customer/CustomerListView";
+import LandingView from "./views/LandingView";
 import NotFoundView from "./views/errors/NotFoundView";
 
 const routes = [
   {
-    path: "/",
+    path: "/app",
     element: <DashboardLayout />,
     children: [
-      { path: "/", element: <Navigate to="/customers" /> },
       { path: "customers", element: <CustomerListView /> },
       // { path: "dashboard", element: <DashboardView /> },
       // { path: "settings", element: <SettingsView /> },
-      { path: "404", element: <NotFoundView /> },
+      // { path: 'customers', element: <Customer />, children: [
+      //   {path: '/', element: <CustomerListView/>},
+      //   {path: ':id', element: <CustomerView/>},
+      // ]},
       { path: "*", element: <Navigate to="/404" /> },
     ],
   },
   {
-    path: "/sessions",
+    path: "/",
     element: <MainLayout />,
     children: [
-      // { path: "login", element: <LoginView /> },
+      { path: "/", element: <Navigate to="/app/customers" /> },
+      { path: "overview", element: <LandingView /> },
+      { path: "404", element: <NotFoundView /> },
       { path: "*", element: <Navigate to="/404" /> },
     ],
   },

@@ -137,7 +137,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
         <Typography align="center" variant="body2">
           Upgrade to PRO version and access 20 more screens
         </Typography>
-        <Box display="flex" justifyContent="center" mt={2}>
+        {/* <Box display="flex" justifyContent="center" mt={2}>
           <Button
             color="primary"
             component="a"
@@ -146,7 +146,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           >
             See PRO version
           </Button>
-        </Box>
+        </Box> */}
       </Box>
     </Box>
   );

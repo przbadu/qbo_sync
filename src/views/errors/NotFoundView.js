@@ -1,5 +1,8 @@
-import React from "react";
-import { Box, Container, Typography, makeStyles } from "@material-ui/core";
+
+import {  useNavigate } from "react-router-dom";
+import { Button, Box, Container, Typography, makeStyles } from "@material-ui/core";
+
+import NotFoundImage from "../../assets/404.svg";
 import Page from "../../components/Page";
 
 const useStyles = makeStyles((theme) => ({
@@ -19,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
 
 const NotFoundView = () => {
   const classes = useStyles();
+  const navigate = useNavigate();
 
   return (
     <Page className={classes.root} title="404">
@@ -34,13 +38,22 @@ const NotFoundView = () => {
           </Typography>
           <Typography align="center" color="textPrimary" variant="subtitle2">
             You either tried some shady route or you came here by mistake.
-            Whichever it is, try using the navigation
+            Whichever it is, try using the navigation{" "}
+          </Typography>
+          <Typography variant="h3" align="center" style={{  marginTop: 20  }}>
+            <Button
+               color="primary"
+               variant="contained"
+               onClick={() => navigate(-2)}
+            >
+              Goto Back
+            </Button>
           </Typography>
           <Box textAlign="center">
             <img
               alt="Under development"
               className={classes.image}
-              src="/static/images/undraw_page_not_found_su7k.svg"
+              src={NotFoundImage}
             />
           </Box>
         </Container>
