@@ -7,12 +7,17 @@ import MainLayout from "./layouts/MainLayout";
 // components
 import CustomerListView from "./views/customer/CustomerListView";
 import LandingView from "./views/LandingView";
+import CallbackView from "./views/Callback";
 import NotFoundView from "./views/errors/NotFoundView";
+import NotAuthorizedView from "./views/errors/NotAuthorizedView";
+import ServerErrorView from "./views/errors/ServerErrorView";
+
+const auth = false;
 
 const routes = [
   {
     path: "/app",
-    element: <DashboardLayout />,
+    element: auth ? <DashboardLayout /> : <Navigate to="/overview" />,
     children: [
       { path: "customers", element: <CustomerListView /> },
       // { path: "dashboard", element: <DashboardView /> },
@@ -26,11 +31,14 @@ const routes = [
   },
   {
     path: "/",
-    element: <MainLayout />,
+    element: null,
     children: [
       { path: "/", element: <Navigate to="/app/customers" /> },
       { path: "overview", element: <LandingView /> },
+      { path: "/callback", element: <CallbackView /> },
       { path: "404", element: <NotFoundView /> },
+      { path: "401", element: <NotAuthorizedView /> },
+      { path: "500", element: <ServerErrorView /> },
       { path: "*", element: <Navigate to="/404" /> },
     ],
   },
