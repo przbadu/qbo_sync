@@ -45,7 +45,10 @@ const Login = () => {
               zIndex: 2,
             }}
           >
-            <a href="/quickbooks/oauth2" className="button mt">
+            <a
+              href={`${process.env.REACT_APP_SERVER_URL}/quickbooks/oauth2`}
+              className="button mt"
+            >
               Start Now
               <svg
                 className="right-arrow"

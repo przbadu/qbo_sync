@@ -1,47 +1,52 @@
-import React from "react";
-import { Navigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 // layouts
 import DashboardLayout from "./layouts/DashboardLayout";
-import MainLayout from "./layouts/MainLayout";
+// import MainLayout from "./layouts/MainLayout";
 // components
 import CustomerListView from "./views/customer/CustomerListView";
 import LandingView from "./views/LandingView";
-import CallbackView from "./views/Callback";
+import Callback from "./views/Callback";
 import NotFoundView from "./views/errors/NotFoundView";
 import NotAuthorizedView from "./views/errors/NotAuthorizedView";
 import ServerErrorView from "./views/errors/ServerErrorView";
 
-const auth = false;
+const AppRoutes = () => {
+  const [auth, setAuth] = useState({user: localStorage.getItem("user")});
 
-const routes = [
-  {
-    path: "/app",
-    element: auth ? <DashboardLayout /> : <Navigate to="/overview" />,
-    children: [
-      { path: "customers", element: <CustomerListView /> },
-      // { path: "dashboard", element: <DashboardView /> },
-      // { path: "settings", element: <SettingsView /> },
-      // { path: 'customers', element: <Customer />, children: [
-      //   {path: '/', element: <CustomerListView/>},
-      //   {path: ':id', element: <CustomerView/>},
-      // ]},
-      { path: "*", element: <Navigate to="/404" /> },
-    ],
-  },
-  {
-    path: "/",
-    element: null,
-    children: [
-      { path: "/", element: <Navigate to="/app/customers" /> },
-      { path: "overview", element: <LandingView /> },
-      { path: "/callback", element: <CallbackView /> },
-      { path: "404", element: <NotFoundView /> },
-      { path: "401", element: <NotAuthorizedView /> },
-      { path: "500", element: <ServerErrorView /> },
-      { path: "*", element: <Navigate to="/404" /> },
-    ],
-  },
-];
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    setAuth({...auth , user});
+  }, []);
 
-export default routes;
+  return (
+    <Routes>
+      <Route
+        path="/app"
+        element={
+          auth && auth.user ? (
+            <DashboardLayout />
+          ) : (
+            <Navigate to="/overview" />
+          )
+        }
+      >
+        <Route path="customers" element={<CustomerListView />} />
+        <Route path="*" element={<Navigate to="/404" />} />
+      </Route>
+
+      <Route path="/">
+        <Route path="/" element={<Navigate to="/app/customers" />} />
+        <Route path="overview" element={<LandingView />} />
+        <Route path="callback" element={<Callback />} />
+        <Route path="404" element={<NotFoundView />} />
+        <Route path="401" element={<NotAuthorizedView />} />
+        <Route path="500" element={<ServerErrorView />} />
+        <Route path="*" element={<Navigate to="/404" />} />
+      </Route>
+    </Routes>
+  );
+};
+
+export default AppRoutes;
