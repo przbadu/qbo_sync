@@ -1,15 +1,14 @@
 import { useContext } from "react";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 import { Box, Container, Typography } from "@material-ui/core";
 import { useEffect } from "react";
 import { useLocation, Navigate } from "react-router-dom";
-import jwtDecode from 'jwt-decode'
+import jwtDecode from "jwt-decode";
 
-import { useStyles } from "./style";
+import { useStyles } from "./callbackStyle";
 import { AuthContext } from "../../context/auth/context";
-import LoadingImage from '../../assets/loading.svg'
+import LoadingImage from "../../assets/loading.svg";
 import Page from "../../components/Page";
-
 
 // A custom hook that builds on useLocation to parse
 // the query string for you.

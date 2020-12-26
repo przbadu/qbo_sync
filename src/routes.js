@@ -6,11 +6,14 @@ import DashboardLayout from "./layouts/DashboardLayout";
 // import MainLayout from "./layouts/MainLayout";
 // components
 import CustomerListView from "./views/customer/CustomerListView";
-import LandingView from "./views/LandingView";
-import Callback from "./views/Callback";
+import Callback from "./views/auth/Callback";
+import Dashboard from './views/dashboard'
+import LandingView from "./views/auth";
 import NotFoundView from "./views/errors/NotFoundView";
 import NotAuthorizedView from "./views/errors/NotAuthorizedView";
+import Products from "./views/products";
 import ServerErrorView from "./views/errors/ServerErrorView";
+import Vendor from "./views/supplier";
 // context
 import {AuthContext} from './context/auth/context'
 
@@ -29,7 +32,10 @@ const AppRoutes = () => {
           )
         }
       >
+        <Route path='dashboard' element={Dashboard} />
         <Route path="customers" element={<CustomerListView />} />
+        <Route path="products" element={<Products />} />
+        <Route path="vendors" element={<Vendor />} />
         <Route path="*" element={<Navigate to="/404" />} />
       </Route>
 

@@ -24,17 +24,22 @@ import {
 } from "react-feather";
 import NavItem from "./NavItem";
 
-const user = {
-  avatar: "/static/images/avatars/avatar_6.png",
-  jobTitle: "Senior Developer",
-  name: "Katarina Smith",
-};
+// const user = {
+//   avatar: "/static/images/avatars/avatar_6.png",
+//   jobTitle: "Senior Developer",
+//   name: "Katarina Smith",
+// };
 
 const items = [
   {
     href: "/app/dashboard",
     icon: BarChartIcon,
     title: "Dashboard",
+  },
+  {
+    href: "/app/vendors",
+    icon: UsersIcon,
+    title: "Vendors",
   },
   {
     href: "/app/customers",
@@ -44,32 +49,12 @@ const items = [
   {
     href: "/app/products",
     icon: ShoppingBagIcon,
-    title: "Products",
-  },
-  {
-    href: "/app/account",
-    icon: UserIcon,
-    title: "Account",
+    title: "Products & Services",
   },
   {
     href: "/app/settings",
     icon: SettingsIcon,
     title: "Settings",
-  },
-  {
-    href: "/login",
-    icon: LockIcon,
-    title: "Login",
-  },
-  {
-    href: "/register",
-    icon: UserPlusIcon,
-    title: "Register",
-  },
-  {
-    href: "/404",
-    icon: AlertCircleIcon,
-    title: "Error",
   },
 ];
 
@@ -102,7 +87,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
 
   const content = (
     <Box height="100%" display="flex" flexDirection="column">
-      <Box alignItems="center" display="flex" flexDirection="column" p={2}>
+      {/* <Box alignItems="center" display="flex" flexDirection="column" p={2}>
         <Avatar
           className={classes.avatar}
           component={RouterLink}
@@ -115,7 +100,7 @@ const NavBar = ({ onMobileClose, openMobile }) => {
         <Typography color="textSecondary" variant="body2">
           {user.jobTitle}
         </Typography>
-      </Box>
+      </Box> */}
       <Divider />
       <Box p={2}>
         <List>
