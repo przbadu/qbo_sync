@@ -8,12 +8,9 @@ const Page = forwardRef(({
   ...rest
 }, ref) => {
   return (
-    <div
-      ref={ref}
-      {...rest}
-    >
+    <div ref={ref} {...rest}>
       <Helmet>
-        <title>{title}</title>
+        <title>Easy Sync | {title}</title>
       </Helmet>
       {children}
     </div>

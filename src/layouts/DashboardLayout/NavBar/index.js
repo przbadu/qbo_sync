@@ -1,62 +1,21 @@
 import React, { useEffect } from "react";
-import { Link as RouterLink, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 import {
-  Avatar,
   Box,
   Button,
   Divider,
   Drawer,
   Hidden,
   List,
+  Menu,
+  MenuItem,
   Typography,
   makeStyles,
 } from "@material-ui/core";
-import {
-  AlertCircle as AlertCircleIcon,
-  BarChart as BarChartIcon,
-  Lock as LockIcon,
-  Settings as SettingsIcon,
-  ShoppingBag as ShoppingBagIcon,
-  User as UserIcon,
-  UserPlus as UserPlusIcon,
-  Users as UsersIcon,
-} from "react-feather";
+
+import { items } from "./menuItems";
 import NavItem from "./NavItem";
-
-// const user = {
-//   avatar: "/static/images/avatars/avatar_6.png",
-//   jobTitle: "Senior Developer",
-//   name: "Katarina Smith",
-// };
-
-const items = [
-  {
-    href: "/app/dashboard",
-    icon: BarChartIcon,
-    title: "Dashboard",
-  },
-  {
-    href: "/app/vendors",
-    icon: UsersIcon,
-    title: "Vendors",
-  },
-  {
-    href: "/app/customers",
-    icon: UsersIcon,
-    title: "Customers",
-  },
-  {
-    href: "/app/products",
-    icon: ShoppingBagIcon,
-    title: "Products & Services",
-  },
-  {
-    href: "/app/settings",
-    icon: SettingsIcon,
-    title: "Settings",
-  },
-];
 
 const useStyles = makeStyles(() => ({
   mobileDrawer: {
@@ -67,10 +26,8 @@ const useStyles = makeStyles(() => ({
     top: 64,
     height: "calc(100% - 64px)",
   },
-  avatar: {
-    cursor: "pointer",
-    width: 64,
-    height: 64,
+  name: {
+    fontWeight: "bold",
   },
 }));
 
@@ -87,20 +44,13 @@ const NavBar = ({ onMobileClose, openMobile }) => {
 
   const content = (
     <Box height="100%" display="flex" flexDirection="column">
-      {/* <Box alignItems="center" display="flex" flexDirection="column" p={2}>
-        <Avatar
-          className={classes.avatar}
-          component={RouterLink}
-          src={user.avatar}
-          to="/app/account"
-        />
-        <Typography className={classes.name} color="textPrimary" variant="h5">
-          {user.name}
+      <Box display="flex" alignItems='center' flexDirection="row" justifyContent='space-between' p={2}>
+        <Typography className={classes.name} color="textPrimary" variant="h4">
+          {/* {user.name} */}
+          ABC Company
         </Typography>
-        <Typography color="textSecondary" variant="body2">
-          {user.jobTitle}
-        </Typography>
-      </Box> */}
+        <Button aria-controls="simple-menu" aria-haspopup="true" onClick={() => {}}>switch</Button>
+      </Box>
       <Divider />
       <Box p={2}>
         <List>
@@ -133,6 +83,11 @@ const NavBar = ({ onMobileClose, openMobile }) => {
           </Button>
         </Box>
       </Box> */}
+      <Box p={2} m={2}>
+        <Button color="primary" variant="contained">
+          Logout
+        </Button>
+      </Box>
     </Box>
   );
 

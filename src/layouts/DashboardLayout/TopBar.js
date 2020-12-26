@@ -10,6 +10,7 @@ import {
   IconButton,
   Toolbar,
   makeStyles,
+  Typography,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import NotificationsIcon from "@material-ui/icons/NotificationsOutlined";
@@ -23,6 +24,16 @@ const useStyles = makeStyles(() => ({
     width: 60,
     height: 60,
   },
+  logo: {
+    display: "flex",
+    alignItems: "center",
+  },
+  appName: {
+    color: 'white',
+    fontWeight: 'bold',
+    marginLeft: 2,
+    textTransform: 'uppercase',
+  },
 }));
 
 const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
@@ -32,8 +43,14 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
   return (
     <AppBar className={clsx(classes.root, className)} elevation={0} {...rest}>
       <Toolbar>
-        <RouterLink to="/">
+        <RouterLink to="/" className={classes.logo}>
           <Logo />
+          <Typography
+            variant="h3"
+            className={classes.appName}
+          >
+            Easy Sync
+          </Typography>
         </RouterLink>
         <Box flexGrow={1} />
         <Hidden mdDown>
