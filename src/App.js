@@ -4,13 +4,16 @@ import { ThemeProvider } from "@material-ui/core";
 import GlobalStyles from "./theme/GlobalStyles";
 import theme from "./theme";
 import AppRoutes from "./routes";
+import AuthProvider from "./context/auth/context";
 
 const App = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyles />
-      <AppRoutes />
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        <AppRoutes />
+      </ThemeProvider>
+    </AuthProvider>
   );
 };
 

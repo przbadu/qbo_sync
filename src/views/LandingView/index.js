@@ -1,9 +1,19 @@
+import { useContext} from 'react';
+import { Navigate } from 'react-router-dom'
+
+// context
+import {AuthContext} from '../../context/auth/context'
+// images
 import QboIcon from "../../assets/qbo.png";
 import Img2 from "../../assets/img2.svg";
 
 import "./Landing.css";
 
 const Login = () => {
+  const context = useContext(AuthContext);
+
+  if (context.isAuthenticated()) return <Navigate to="/" />;
+
   return (
     <div className="container-wrapper">
       <nav className="container">

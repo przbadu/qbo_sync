@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useContext } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 // layouts
@@ -11,21 +11,18 @@ import Callback from "./views/Callback";
 import NotFoundView from "./views/errors/NotFoundView";
 import NotAuthorizedView from "./views/errors/NotAuthorizedView";
 import ServerErrorView from "./views/errors/ServerErrorView";
+// context
+import {AuthContext} from './context/auth/context'
 
 const AppRoutes = () => {
-  const [auth, setAuth] = useState({user: localStorage.getItem("user")});
-
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
-    setAuth({...auth , user});
-  }, []);
+  const context = useContext(AuthContext);
 
   return (
     <Routes>
       <Route
         path="/app"
         element={
-          auth && auth.user ? (
+          context.isAuthenticated() ? (
             <DashboardLayout />
           ) : (
             <Navigate to="/overview" />
