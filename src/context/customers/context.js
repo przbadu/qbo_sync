@@ -10,10 +10,15 @@ const CustomerProvider = ({ children }) => {
   const [customers, dispatch] = React.useReducer(customerReducer, initialState);
 
   /// fetch all customers from quickbooks
-  const fetchCustomers = async () => {
+  const fetchCustomers = async (page, perPage) => {
+    page = page || customers.page;
+    perPage = perPage || customers.perPage;
+
     dispatch({ type: actionType.FETCHING_CUSTOMERS });
     try {
-      const { data } = await Api().get("/customers");
+      const { data } = await Api().get(
+        `/customers?page=${page}&per=${perPage}`
+      );
       dispatch({ type: actionType.SUCCESS_FETCHING_CUSTOMERS, payload: data });
     } catch (e) {
       dispatch({
@@ -55,12 +60,24 @@ const CustomerProvider = ({ children }) => {
     }
   };
 
+  const updatePage = (payload) => {
+    dispatch({ type: actionType.UPDATE_PAGE_VALUE, payload });
+    fetchCustomers(payload);
+  };
+
+  const updatePerPage = (payload) => {
+    dispatch({ type: actionType.UPDATE_PER_PAGE_VALUE, payload });
+    fetchCustomers(null, payload);
+  };
+
   const contextValue = {
     ...customers,
     fetchCustomers,
     toggleSelectAllCustomer,
     deleteSelectedCustomers,
     updateProgress,
+    updatePage,
+    updatePerPage,
   };
 
   return (

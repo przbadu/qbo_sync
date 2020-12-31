@@ -37,8 +37,6 @@ const useStyles = makeStyles((theme) => ({
 const Results = ({ className, ...rest }) => {
   const classes = useStyles();
   const context = useContext(CustomerContext);
-  const [limit, setLimit] = useState(10);
-  const [page, setPage] = useState(0);
 
   const handleSelectAll = (event) => {
     let newSelectedCustomerIds;
@@ -77,14 +75,6 @@ const Results = ({ className, ...rest }) => {
     }
 
     context.toggleSelectAllCustomer(newSelectedCustomerIds);
-  };
-
-  const handleLimitChange = (event) => {
-    setLimit(event.target.value);
-  };
-
-  const handlePageChange = (event, newPage) => {
-    setPage(newPage);
   };
 
   return (
@@ -126,7 +116,7 @@ const Results = ({ className, ...rest }) => {
                   </TableCell>
                 </TableRow>
               ) : (
-                context.customers.slice(0, limit).map((customer) => (
+                context.customers.map((customer) => (
                   <TableRow
                     hover
                     key={customer.Id}
@@ -181,12 +171,12 @@ const Results = ({ className, ...rest }) => {
       </PerfectScrollbar>
       <TablePagination
         component="div"
-        count={context.customers.length}
-        onChangePage={handlePageChange}
-        onChangeRowsPerPage={handleLimitChange}
-        page={page}
-        rowsPerPage={limit}
-        rowsPerPageOptions={[5, 10, 25]}
+        count={context.totalResult}
+        onChangePage={(_e, newPage) => context.updatePage(newPage)}
+        onChangeRowsPerPage={(e) => context.updatePerPage(e.target.value)}
+        page={context.page}
+        rowsPerPage={context.perPage}
+        rowsPerPageOptions={[50, 100, 250, 500, 1000]}
       />
     </Card>
   );

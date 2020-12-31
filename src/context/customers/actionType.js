@@ -1,3 +1,5 @@
+export const UPDATE_PAGE_VALUE = "customers/updatePageValue";
+export const UPDATE_PER_PAGE_VALUE = "customers/updatePerPageValue";
 export const FETCHING_CUSTOMERS = "customers/fetching";
 export const ERROR_FETCHING_CUSTOMERS = "customers/error";
 export const SUCCESS_FETCHING_CUSTOMERS = "customers/success";
