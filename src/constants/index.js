@@ -1,2 +1,11 @@
-export const API_URL = process.env.REACT_APP_SERVER_URL;
-export const WS_URL = process.env.REACT_APP_WS_PATH;
+let API_URL;
+let WS_URL;
+if (process.env.NODE_ENV === "production") {
+  API_URL = "https://qbauth.herokuapp.com";
+  WS_URL = "ws://qbauth.herokuapp.com/cable";
+} else {
+  API_URL = "http://localhost:3000";
+  WS_URL = "ws://localhost:3000/cable";
+}
+
+export { API_URL, WS_URL };
