@@ -1,13 +1,4 @@
-import {
-  ERROR_FETCHING_CUSTOMERS,
-  FETCHING_CUSTOMERS,
-  SUCCESS_FETCHING_CUSTOMERS_WITH_LOGS,
-  SUCCESS_FETCHING_CUSTOMERS,
-  TOGGLE_SELECT_ALL_CUSTOMERS,
-  SET_JOB_ID,
-  BACKGROUND_JOBS_COMPLETED,
-  UPDATE_PROGRESS,
-} from "./context";
+import * as actionType from "./actionType";
 
 export const initialState = {
   customers: [],
@@ -20,36 +11,36 @@ export const initialState = {
 
 export const customerReducer = (state = initialState, action) => {
   switch (action.type) {
-    case TOGGLE_SELECT_ALL_CUSTOMERS:
+    case actionType.TOGGLE_SELECT_ALL_CUSTOMERS:
       return {
         ...state,
         selectedCustomerIds: action.payload,
       };
-    case FETCHING_CUSTOMERS:
+    case actionType.FETCHING_CUSTOMERS:
       return {
         ...state,
         customers: [],
         loading: true,
         error: null,
       };
-    case ERROR_FETCHING_CUSTOMERS:
+    case actionType.ERROR_FETCHING_CUSTOMERS:
       return {
         ...state,
         customers: [],
         loading: false,
         error: action.payload,
       };
-    case SUCCESS_FETCHING_CUSTOMERS:
+    case actionType.SUCCESS_FETCHING_CUSTOMERS:
       return {
         ...state,
         error: null,
         loading: false,
         customers: action.payload,
       };
-    case SUCCESS_FETCHING_CUSTOMERS_WITH_LOGS:
-      const { customers, logs } = action.payload;
+    case actionType.SUCCESS_FETCHING_CUSTOMERS_WITH_LOGS:
+      const { customers, activity } = action.payload;
       const new_customers = customers.map((customer) => {
-        const log = logs.find(
+        const log = activity.logs.find(
           (l) => l.id === customer.Id && l.status === "failed"
         );
         return {
@@ -64,17 +55,17 @@ export const customerReducer = (state = initialState, action) => {
         customers: new_customers,
         selectedCustomerIds: [],
       };
-    case SET_JOB_ID:
+    case actionType.SET_JOB_ID:
       return {
         ...state,
         jobId: action.payload,
       };
-    case UPDATE_PROGRESS:
+    case actionType.UPDATE_PROGRESS:
       return {
         ...state,
         progress: action.payload,
       };
-    case BACKGROUND_JOBS_COMPLETED:
+    case actionType.BACKGROUND_JOBS_COMPLETED:
       return {
         ...state,
         jobId: null,

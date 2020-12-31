@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
   error: {
     color: "red",
     fontSize: "11px",
+    maxWidth: "200px",
   },
 }));
 
@@ -180,7 +181,7 @@ const Results = ({ className, ...rest }) => {
       </PerfectScrollbar>
       <TablePagination
         component="div"
-        count={context.length}
+        count={context.customers.length}
         onChangePage={handlePageChange}
         onChangeRowsPerPage={handleLimitChange}
         page={page}

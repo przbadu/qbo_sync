@@ -7,7 +7,7 @@ import DashboardLayout from "./layouts/DashboardLayout";
 // components
 import CustomerListView from "./views/customer";
 import Callback from "./views/auth/Callback";
-import Dashboard from './views/dashboard'
+import Dashboard from "./views/dashboard";
 import LandingView from "./views/auth";
 import NotFoundView from "./views/errors/NotFoundView";
 import NotAuthorizedView from "./views/errors/NotAuthorizedView";
@@ -15,7 +15,7 @@ import Products from "./views/products";
 import ServerErrorView from "./views/errors/ServerErrorView";
 import Vendor from "./views/supplier";
 // context
-import {AuthContext} from './context/auth/context'
+import { AuthContext } from "./context/auth/context";
 
 const AppRoutes = () => {
   const context = useContext(AuthContext);
@@ -32,7 +32,7 @@ const AppRoutes = () => {
           )
         }
       >
-        <Route path='dashboard' element={Dashboard} />
+        <Route path="dashboard" element={<Dashboard />} />
         <Route path="customers" element={<CustomerListView />} />
         <Route path="products" element={<Products />} />
         <Route path="vendors" element={<Vendor />} />

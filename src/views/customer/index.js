@@ -26,7 +26,7 @@ const CustomerListView = () => {
 
   return (
     <ActionCableConsumer
-      channel="BulkDeleteChannel"
+      channel={{ channel: "BulkDeleteChannel", room: context.jobId }}
       onReceived={context.updateProgress}
     >
       <Page className={classes.root} title="Customers">
