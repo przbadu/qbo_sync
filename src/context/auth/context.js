@@ -3,6 +3,7 @@ import { authReducer, initialState } from "./reducer";
 
 export const ERROR = "auth/error";
 export const LOGIN = "auth/authenticated";
+export const RENEW_TOKEN = "auth/token_renewed";
 export const LOGOUT = "auth/logout";
 
 export const AuthContext = createContext();

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useContext } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import clsx from "clsx";
 import PropTypes from "prop-types";
@@ -17,6 +17,7 @@ import NotificationsIcon from "@material-ui/icons/NotificationsOutlined";
 import InputIcon from "@material-ui/icons/Input";
 
 import Logo from "./../../components/Logo";
+import { AuthContext } from "../../context/auth/context";
 
 const useStyles = makeStyles(() => ({
   root: {},
@@ -38,6 +39,7 @@ const useStyles = makeStyles(() => ({
 
 const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
   const classes = useStyles();
+  const context = useContext(AuthContext);
   const [notifications] = useState([]);
 
   return (
@@ -45,10 +47,7 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
       <Toolbar>
         <RouterLink to="/" className={classes.logo}>
           <Logo />
-          <Typography
-            variant="h3"
-            className={classes.appName}
-          >
+          <Typography variant="h3" className={classes.appName}>
             Easy Sync
           </Typography>
         </RouterLink>
@@ -63,7 +62,7 @@ const TopBar = ({ className, onMobileNavOpen, ...rest }) => {
               <NotificationsIcon />
             </Badge>
           </IconButton>
-          <IconButton color="inherit">
+          <IconButton color="inherit" onClick={() => context.logout()}>
             <InputIcon />
           </IconButton>
         </Hidden>

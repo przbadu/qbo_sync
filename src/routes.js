@@ -5,7 +5,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import DashboardLayout from "./layouts/DashboardLayout";
 // import MainLayout from "./layouts/MainLayout";
 // components
-import CustomerListView from "./views/customer/CustomerListView";
+import CustomerListView from "./views/customer";
 import Callback from "./views/auth/Callback";
 import Dashboard from './views/dashboard'
 import LandingView from "./views/auth";

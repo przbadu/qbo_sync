@@ -1,11 +1,12 @@
-import { useContext} from 'react';
-import { Navigate } from 'react-router-dom'
+import { useContext } from "react";
+import { Navigate } from "react-router-dom";
 
 // context
-import {AuthContext} from '../../context/auth/context'
+import { AuthContext } from "../../context/auth/context";
 // images
 import QboIcon from "../../assets/qbo.png";
 import Img2 from "../../assets/img2.svg";
+import { API_URL } from "../../constants";
 
 import "./Landing.css";
 
@@ -55,10 +56,7 @@ const Login = () => {
               zIndex: 2,
             }}
           >
-            <a
-              href={`${process.env.REACT_APP_SERVER_URL}/quickbooks/oauth2`}
-              className="button mt"
-            >
+            <a href={`${API_URL}/quickbooks/oauth2`} className="button mt">
               Start Now
               <svg
                 className="right-arrow"
