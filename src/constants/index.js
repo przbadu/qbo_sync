@@ -5,7 +5,7 @@ if (process.env.NODE_ENV === "production") {
   WS_URL = "wss://qboauth.prod/cable";
 } else {
   API_URL = "http://localhost:3000";
-  WS_URL = "wss://localhost:3000/cable";
+  WS_URL = "ws://localhost:3000/cable";
 }
 
 export { API_URL, WS_URL };

@@ -47,7 +47,7 @@ export const customerReducer = (state = initialState, action) => {
       };
     case actionType.SUCCESS_FETCHING_CUSTOMERS_WITH_LOGS:
       const newCustomers = action.payload.customers.map((customer) => {
-        const log = action.payload.logs.find(
+        const log = action.payload.activity.logs.find(
           (l) => l.id === customer.Id && l.status === "failed"
         );
         return {
