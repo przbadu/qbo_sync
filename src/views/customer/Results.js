@@ -17,6 +17,7 @@ import {
   Typography,
   makeStyles,
 } from "@material-ui/core";
+import { fade } from "@material-ui/core/styles/colorManipulator";
 
 import { CustomerContext } from "../../context/customers/context";
 import ProgressBar from "../../components/ProgressBar";
@@ -32,6 +33,14 @@ const useStyles = makeStyles((theme) => ({
     fontSize: "11px",
     maxWidth: "200px",
   },
+  // selectedTableRow: {
+  //   "&$selected, &$selected:hover": {
+  //     backgroundColor: fade(
+  //       theme.palette.primary.main,
+  //       theme.palette.action.selectedOpacity
+  //     ),
+  //   },
+  // },
 }));
 
 const Results = ({ className, ...rest }) => {
@@ -42,7 +51,9 @@ const Results = ({ className, ...rest }) => {
     let newSelectedCustomerIds;
 
     if (event.target.checked) {
-      newSelectedCustomerIds = context.customers.map((customer) => customer.Id);
+      newSelectedCustomerIds = context.customers.map(
+        (customer) => `${customer.DisplayName}::${customer.Id}`
+      );
     } else {
       newSelectedCustomerIds = [];
     }
@@ -90,7 +101,7 @@ const Results = ({ className, ...rest }) => {
                       context.selectedCustomerIds?.length ===
                       context.customers.length
                     }
-                    color="primary"
+                    color="secondary"
                     indeterminate={
                       context.selectedCustomerIds.length > 0 &&
                       context.selectedCustomerIds.length <
@@ -121,19 +132,27 @@ const Results = ({ className, ...rest }) => {
                     hover
                     key={customer.Id}
                     selected={
-                      context.selectedCustomerIds.indexOf(customer.Id) !== -1
+                      context.selectedCustomerIds.indexOf(
+                        `${customer.DisplayName}::${customer.Id}`
+                      ) !== -1
                     }
+                    className={classes.selectedTableRow}
                   >
                     <TableCell padding="checkbox">
                       <Checkbox
                         checked={
-                          context.selectedCustomerIds.indexOf(customer.Id) !==
-                          -1
+                          context.selectedCustomerIds.indexOf(
+                            `${customer.DisplayName}::${customer.Id}`
+                          ) !== -1
                         }
                         onChange={(event) =>
-                          handleSelectOne(event, customer.Id)
+                          handleSelectOne(
+                            event,
+                            `${customer.DisplayName}::${customer.Id}`
+                          )
                         }
                         value="true"
+                        color="secondary"
                       />
                     </TableCell>
                     <TableCell>

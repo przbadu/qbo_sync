@@ -23,29 +23,32 @@ const Toolbar = ({ className, ...rest }) => {
   return (
     <div className={clsx(classes.root, className)} {...rest}>
       <Box display="flex" justifyContent="flex-end">
-        <Button
-          color="secondary"
-          variant="outlined"
-          className={classes.importButton}
-        >
-          Import
-        </Button>
-        <Button
-          color="secondary"
-          variant="outlined"
-          className={classes.exportButton}
-        >
-          Export
-        </Button>
         {selectedCustomerIds.length ? (
+          <>
+            <Button
+              color="primary"
+              variant="contained"
+              className={classes.exportButton}
+            >
+              CSV Export ({selectedCustomerIds.length})
+            </Button>
+            <Button
+              color="secondary"
+              variant="contained"
+              onClick={() => deleteSelectedCustomers(selectedCustomerIds)}
+            >
+              Make Inactive ({selectedCustomerIds.length})
+            </Button>
+          </>
+        ) : (
           <Button
             color="primary"
             variant="contained"
-            onClick={() => deleteSelectedCustomers(selectedCustomerIds)}
+            className={classes.importButton}
           >
-            Make Inactive ({selectedCustomerIds.length})
+            Import Customer
           </Button>
-        ) : null}
+        )}
       </Box>
       {/* <Box mt={3}>
         <Card>
