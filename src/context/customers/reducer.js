@@ -49,9 +49,13 @@ export const customerReducer = (state = initialState, action) => {
       };
     case actionType.SUCCESS_FETCHING_CUSTOMERS_WITH_LOGS:
       const newCustomers = action.payload.customers.map((customer) => {
-        const log = action.payload.activity.logs.find(
-          (l) => l.id === customer.Id && l.status === "failed"
-        );
+        let log;
+        if (action.payload.activity?.logs) {
+          log = action.payload.activity.logs.find(
+            (l) => l.id === customer.Id && l.status === "failed"
+          );
+        }
+
         return {
           ...customer,
           logs: log?.message,
@@ -70,12 +74,14 @@ export const customerReducer = (state = initialState, action) => {
       return {
         ...state,
         jobId: action.payload,
+        loading: true,
         isDeleting: true,
       };
-    case actionType.SET_EXPORTING_JOB_ID:
+    case actionType.SET_EXPORTING:
       return {
         ...state,
         jobId: action.payload,
+        loading: true,
         isExporting: true,
       };
     case actionType.UPDATE_PROGRESS:
@@ -83,20 +89,15 @@ export const customerReducer = (state = initialState, action) => {
         ...state,
         progress: action.payload,
       };
-    case actionType.DELETING_CUSTOMERS_COMPLETED:
+    case actionType.PROCESSING_CUSTOMERS_COMPLETED:
       return {
         ...state,
         jobId: null,
         progress: 0,
         isDeleting: false,
-      };
-    case actionType.EXPORTING_CUSTOMERS_COMPLETED:
-      return {
-        ...state,
-        jobId: null,
-        progress: 0,
         isExporting: false,
       };
+
     default:
       return state;
   }

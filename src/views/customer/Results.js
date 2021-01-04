@@ -120,7 +120,7 @@ const Results = ({ className, ...rest }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {context.loading && context.isDeleting ? (
+              {context.loading ? (
                 <TableRow>
                   <TableCell colSpan={8} align="center">
                     <ProgressBar progress={context.progress} />
@@ -171,7 +171,10 @@ const Results = ({ className, ...rest }) => {
                     <TableCell>
                       {customer.PrimaryPhone?.FreeFormNumber}
                     </TableCell>
-                    <TableCell>${customer.Balance}.00</TableCell>
+                    <TableCell>
+                      {customer.CurrencyRef?.value}
+                      {customer.Balance}.00
+                    </TableCell>
                     <TableCell>
                       {moment(customer.MetaData?.CreateTime).format(
                         "DD/MM/YYYY"

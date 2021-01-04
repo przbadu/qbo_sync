@@ -33,11 +33,27 @@ const CustomerProvider = ({ children }) => {
     dispatch({ type: actionType.TOGGLE_SELECT_ALL_CUSTOMERS, payload: ids });
 
   /// Delete selected customers
-  const deleteSelectedCustomers = async (ids) => {
+  const deleteSelectedCustomers = async () => {
     dispatch({ type: actionType.FETCHING_CUSTOMERS });
     try {
-      const { data } = await Api().post("/customers/mark_inactive", { ids });
+      const { data } = await Api().post("/customers/mark_inactive", {
+        ids: customers.ids,
+      });
       dispatch({ type: actionType.SET_DELETING_JOB_ID, payload: data.job_id });
+    } catch (e) {
+      dispatch({
+        type: actionType.ERROR_FETCHING_CUSTOMERS,
+        payload: e.message,
+      });
+    }
+  };
+
+  // export customers
+  const exportCustomers = async () => {
+    dispatch({ type: actionType.FETCHING_CUSTOMERS });
+    try {
+      const { data } = await Api().post("/customers/export");
+      dispatch({ type: actionType.SET_EXPORTING, payload: data.job_id });
     } catch (e) {
       dispatch({
         type: actionType.ERROR_FETCHING_CUSTOMERS,
@@ -52,7 +68,7 @@ const CustomerProvider = ({ children }) => {
       const { data } = await Api().get(
         `/customers/with_logs?job_id=${customers.jobId}`
       );
-      dispatch({ type: actionType.DELETING_CUSTOMERS_COMPLETED });
+      dispatch({ type: actionType.PROCESSING_CUSTOMERS_COMPLETED });
       dispatch({
         type: actionType.SUCCESS_FETCHING_CUSTOMERS_WITH_LOGS,
         payload: data,
@@ -75,6 +91,7 @@ const CustomerProvider = ({ children }) => {
     fetchCustomers,
     toggleSelectAllCustomer,
     deleteSelectedCustomers,
+    exportCustomers,
     updateProgress,
     updatePage,
     updatePerPage,

@@ -25,9 +25,16 @@ const Toolbar = ({ className, ...rest }) => {
       <Box style={{ marginBottom: "10px" }} justifyContent="space-between">
         {context.isDeleting && (
           <AppAlert severity="info">
-            <Typography variant="subtitle1" color="white" component="div">
+            <Typography variant="subtitle1" component="div">
               Deleting {context.selectedCustomerIds.length} selected customer(s)
               - {`${context?.progress?.percent || 0}%`}
+            </Typography>
+          </AppAlert>
+        )}
+        {context.isExporting && (
+          <AppAlert severity="info">
+            <Typography variant="subtitle1" component="div">
+              Exported {context?.progress?.count} customer(s)
             </Typography>
           </AppAlert>
         )}
@@ -35,34 +42,34 @@ const Toolbar = ({ className, ...rest }) => {
       <Box display="flex" justifyContent="flex-start"></Box>
       <Box display="flex" justifyContent="flex-end">
         {context.selectedCustomerIds.length ? (
+          <Button
+            color="primary"
+            variant="contained"
+            onClick={() => context.deleteSelectedCustomers}
+            disabled={context.loading}
+          >
+            Make Inactive ({context.selectedCustomerIds.length})
+          </Button>
+        ) : (
           <>
             <Button
               color="primary"
               variant="contained"
               className={classes.exportButton}
               disabled={context.loading}
+              onClick={context.exportCustomers}
             >
-              CSV Export ({context.selectedCustomerIds.length})
+              CSV Export
             </Button>
             <Button
               color="secondary"
               variant="contained"
-              onClick={() =>
-                context.deleteSelectedCustomers(context.selectedCustomerIds)
-              }
+              className={classes.importButton}
               disabled={context.loading}
             >
-              Make Inactive ({context.selectedCustomerIds.length})
+              Import Customer
             </Button>
           </>
-        ) : (
-          <Button
-            color="primary"
-            variant="contained"
-            className={classes.importButton}
-          >
-            Import Customer
-          </Button>
         )}
       </Box>
       {/* <Box mt={3}>
