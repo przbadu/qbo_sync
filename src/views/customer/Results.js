@@ -101,7 +101,7 @@ const Results = ({ className, ...rest }) => {
                       context.selectedCustomerIds?.length ===
                       context.customers.length
                     }
-                    color="secondary"
+                    color="primary"
                     indeterminate={
                       context.selectedCustomerIds.length > 0 &&
                       context.selectedCustomerIds.length <
@@ -120,7 +120,7 @@ const Results = ({ className, ...rest }) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {context.loading ? (
+              {context.loading && context.isDeleting ? (
                 <TableRow>
                   <TableCell colSpan={8} align="center">
                     <ProgressBar progress={context.progress} />
@@ -131,12 +131,11 @@ const Results = ({ className, ...rest }) => {
                   <TableRow
                     hover
                     key={customer.Id}
-                    selected={
-                      context.selectedCustomerIds.indexOf(
-                        `${customer.DisplayName}::${customer.Id}`
-                      ) !== -1
-                    }
-                    className={classes.selectedTableRow}
+                    // selected={
+                    //   context.selectedCustomerIds.indexOf(
+                    //     `${customer.DisplayName}::${customer.Id}`
+                    //   ) !== -1
+                    // }
                   >
                     <TableCell padding="checkbox">
                       <Checkbox
@@ -152,7 +151,7 @@ const Results = ({ className, ...rest }) => {
                           )
                         }
                         value="true"
-                        color="secondary"
+                        color="primary"
                       />
                     </TableCell>
                     <TableCell>

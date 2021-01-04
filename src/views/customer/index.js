@@ -24,9 +24,11 @@ const CustomerListView = () => {
     context.fetchCustomers();
   }, []);
 
+  console.log(context.jobId, "jobid");
+
   return (
     <ActionCableConsumer
-      channel={{ channel: "BulkDeleteChannel", room: context.jobId }}
+      channel={{ channel: "BackgroundJobChannel", room: context.jobId }}
       onReceived={context.updateProgress}
     >
       <Page className={classes.root} title="Customers">

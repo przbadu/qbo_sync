@@ -37,7 +37,7 @@ const CustomerProvider = ({ children }) => {
     dispatch({ type: actionType.FETCHING_CUSTOMERS });
     try {
       const { data } = await Api().post("/customers/mark_inactive", { ids });
-      dispatch({ type: actionType.SET_JOB_ID, payload: data.job_id });
+      dispatch({ type: actionType.SET_DELETING_JOB_ID, payload: data.job_id });
     } catch (e) {
       dispatch({
         type: actionType.ERROR_FETCHING_CUSTOMERS,
@@ -52,7 +52,7 @@ const CustomerProvider = ({ children }) => {
       const { data } = await Api().get(
         `/customers/with_logs?job_id=${customers.jobId}`
       );
-      dispatch({ type: actionType.BACKGROUND_JOBS_COMPLETED });
+      dispatch({ type: actionType.DELETING_CUSTOMERS_COMPLETED });
       dispatch({
         type: actionType.SUCCESS_FETCHING_CUSTOMERS_WITH_LOGS,
         payload: data,

@@ -1,8 +1,10 @@
 import { useContext } from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
-import { Box, Button, makeStyles } from "@material-ui/core";
+import { Box, Button, makeStyles, Typography } from "@material-ui/core";
+
 import { CustomerContext } from "../../context/customers/context";
+import { AppAlert } from "../../components";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -16,28 +18,41 @@ const useStyles = makeStyles((theme) => ({
 
 const Toolbar = ({ className, ...rest }) => {
   const classes = useStyles();
-  const { selectedCustomerIds, deleteSelectedCustomers } = useContext(
-    CustomerContext
-  );
+  const context = useContext(CustomerContext);
 
   return (
     <div className={clsx(classes.root, className)} {...rest}>
+      <Box style={{ marginBottom: "10px" }} justifyContent="space-between">
+        {context.isDeleting && (
+          <AppAlert severity="info">
+            <Typography variant="subtitle1" color="white" component="div">
+              Deleting {context.selectedCustomerIds.length} selected customer(s)
+              - {`${context?.progress?.percent || 0}%`}
+            </Typography>
+          </AppAlert>
+        )}
+      </Box>
+      <Box display="flex" justifyContent="flex-start"></Box>
       <Box display="flex" justifyContent="flex-end">
-        {selectedCustomerIds.length ? (
+        {context.selectedCustomerIds.length ? (
           <>
             <Button
               color="primary"
               variant="contained"
               className={classes.exportButton}
+              disabled={context.loading}
             >
-              CSV Export ({selectedCustomerIds.length})
+              CSV Export ({context.selectedCustomerIds.length})
             </Button>
             <Button
               color="secondary"
               variant="contained"
-              onClick={() => deleteSelectedCustomers(selectedCustomerIds)}
+              onClick={() =>
+                context.deleteSelectedCustomers(context.selectedCustomerIds)
+              }
+              disabled={context.loading}
             >
-              Make Inactive ({selectedCustomerIds.length})
+              Make Inactive ({context.selectedCustomerIds.length})
             </Button>
           </>
         ) : (

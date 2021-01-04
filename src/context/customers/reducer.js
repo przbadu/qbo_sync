@@ -10,6 +10,8 @@ export const initialState = {
   totalResult: 0,
   page: 0,
   perPage: 50,
+  isDeleting: false,
+  isExporting: false,
 };
 
 export const customerReducer = (state = initialState, action) => {
@@ -64,21 +66,36 @@ export const customerReducer = (state = initialState, action) => {
         selectedCustomerIds: [],
         totalResult: action.payload.totalResult,
       };
-    case actionType.SET_JOB_ID:
+    case actionType.SET_DELETING_JOB_ID:
       return {
         ...state,
         jobId: action.payload,
+        isDeleting: true,
+      };
+    case actionType.SET_EXPORTING_JOB_ID:
+      return {
+        ...state,
+        jobId: action.payload,
+        isExporting: true,
       };
     case actionType.UPDATE_PROGRESS:
       return {
         ...state,
         progress: action.payload,
       };
-    case actionType.BACKGROUND_JOBS_COMPLETED:
+    case actionType.DELETING_CUSTOMERS_COMPLETED:
       return {
         ...state,
         jobId: null,
         progress: 0,
+        isDeleting: false,
+      };
+    case actionType.EXPORTING_CUSTOMERS_COMPLETED:
+      return {
+        ...state,
+        jobId: null,
+        progress: 0,
+        isExporting: false,
       };
     default:
       return state;
