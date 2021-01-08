@@ -5,7 +5,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import DashboardLayout from "./layouts/DashboardLayout";
 // import MainLayout from "./layouts/MainLayout";
 // components
-import CustomerListView from "./views/customer";
+import { CustomerImport, CustomerListView } from "./views/customer";
 import Callback from "./views/auth/Callback";
 import Dashboard from "./views/dashboard";
 import LandingView from "./views/auth";
@@ -33,7 +33,10 @@ const AppRoutes = () => {
         }
       >
         <Route path="dashboard" element={<Dashboard />} />
-        <Route path="customers" element={<CustomerListView />} />
+        <Route path="customers">
+          <Route path="/" element={<CustomerListView />} />
+          <Route path="/import" element={<CustomerImport />} />
+        </Route>
         <Route path="products" element={<Products />} />
         <Route path="vendors" element={<Vendor />} />
         <Route path="*" element={<Navigate to="/404" />} />

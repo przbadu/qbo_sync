@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import clsx from "clsx";
 import { Box, Button, makeStyles, Typography } from "@material-ui/core";
 
-import { CustomerContext } from "../../context/customers/context";
-import { AppAlert } from "../../components";
+import { CustomerContext } from "../../../context/customers/context";
+import { AppAlert } from "../../../components";
 
 const useStyles = makeStyles((theme) => ({
   root: {},

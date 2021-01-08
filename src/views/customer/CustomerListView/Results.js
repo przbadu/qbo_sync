@@ -19,9 +19,9 @@ import {
 } from "@material-ui/core";
 import { fade } from "@material-ui/core/styles/colorManipulator";
 
-import { CustomerContext } from "../../context/customers/context";
-import ProgressBar from "../../components/ProgressBar";
-import getInitials from "../../utils/getInitials";
+import { CustomerContext } from "../../../context/customers/context";
+import ProgressBar from "../../../components/ProgressBar";
+import getInitials from "../../../utils/getInitials";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
