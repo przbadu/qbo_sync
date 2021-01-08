@@ -2,6 +2,7 @@ import { useContext } from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 import { Box, Button, makeStyles, Typography } from "@material-ui/core";
+import { useNavigate } from "react-router-dom";
 
 import { CustomerContext } from "../../../context/customers/context";
 import { AppAlert } from "../../../components";
@@ -19,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
 const Toolbar = ({ className, ...rest }) => {
   const classes = useStyles();
   const context = useContext(CustomerContext);
+  const navigate = useNavigate();
 
   return (
     <div className={clsx(classes.root, className)} {...rest}>
@@ -66,6 +68,7 @@ const Toolbar = ({ className, ...rest }) => {
               variant="contained"
               className={classes.importButton}
               disabled={context.loading}
+              onClick={() => navigate("/app/customers/import")}
             >
               Import Customer
             </Button>
