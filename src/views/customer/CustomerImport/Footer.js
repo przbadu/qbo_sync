@@ -12,6 +12,8 @@ const useStyles = makeStyles((theme) => ({
   buttons: {
     display: "flex",
     justifyContent: "space-between",
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
   },
 }));
 
@@ -21,12 +23,11 @@ const Footer = ({ activeStep, steps, handleBack, handleNext, invalid }) => {
   return (
     <div className={classes.buttons}>
       <Button
-        disabled={activeStep === 0}
         onClick={handleBack}
         className={classes.backButton}
         variant="contained"
       >
-        Back
+        {activeStep === 0 ? "Cancel" : "Back"}
       </Button>
       <Button
         disabled={invalid}

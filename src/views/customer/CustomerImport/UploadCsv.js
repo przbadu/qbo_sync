@@ -5,9 +5,6 @@ import Typography from "@material-ui/core/Typography";
 import {} from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    padding: theme.spacing(4),
-  },
   fileImport: {
     marginTop: theme.spacing(4),
     padding: theme.spacing(4),

@@ -1,0 +1,109 @@
+{
+  "headers": {
+    "items": [
+      { "colNum": 0, "colHeader": "Name" },
+      { "colNum": 1, "colHeader": "Company" },
+      { "colNum": 2, "colHeader": "Customer Type" },
+      { "colNum": 3, "colHeader": "Email" },
+      { "colNum": 4, "colHeader": "Phone" },
+      { "colNum": 5, "colHeader": "Mobile" },
+      { "colNum": 6, "colHeader": "Fax" },
+      { "colNum": 7, "colHeader": "Website" },
+      { "colNum": 8, "colHeader": "Street" },
+      { "colNum": 9, "colHeader": "City" },
+      { "colNum": 10, "colHeader": "State " },
+      { "colNum": 11, "colHeader": "ZIP" },
+      { "colNum": 12, "colHeader": "Country" },
+      { "colNum": 13, "colHeader": "Opening Balance" },
+      { "colNum": 14, "colHeader": "Date" }
+    ]
+  },
+  "mappings": {
+    "mappingInfo": {
+      "Name": { "colNum": 0, "colHeader": "Name" },
+      "Company": { "colNum": 1, "colHeader": "Company" },
+      "CustomerType": { "colNum": 2, "colHeader": "Customer Type" },
+      "Email": { "colNum": 3, "colHeader": "Email" },
+      "Phone": { "colNum": 4, "colHeader": "Phone" },
+      "Mobile": { "colNum": 5, "colHeader": "Mobile" },
+      "Fax": { "colNum": 6, "colHeader": "Fax" },
+      "Website": { "colNum": 7, "colHeader": "Website" },
+      "BillingAddressStreet": { "colNum": 8, "colHeader": "Street" },
+      "BillingAddressCity": { "colNum": 9, "colHeader": "City" },
+      "BillingAddressState": { "colNum": 10, "colHeader": "State " },
+      "BillingAddressZip": { "colNum": 11, "colHeader": "ZIP" },
+      "BillingAddressCountry": {
+        "colNum": 12,
+        "colHeader": "Country"
+      },
+      "OpeningBalance": {
+        "colNum": 13,
+        "colHeader": "Opening Balance"
+      },
+      "OpeningBalanceDate": { "colNum": 14, "colHeader": "Date" }
+    }
+  },
+  "data": {
+    "numRows": 2,
+    "totalRows": 2,
+    "items": [
+      {
+        "0": "Byran Tublin",
+        "1": "RDP Inc.",
+        "2": "Wholesale Trade",
+        "3": "IloveQBO@hotmail.com",
+        "4": "555-5555",
+        "5": "555-555-1234",
+        "6": "555-5556",
+        "7": "http://www.rdpinc.com",
+        "8": "123 Accounting Lane",
+        "9": "San Francisco",
+        "10": "CA",
+        "11": "12345",
+        "12": "United States",
+        "13": "234000.12",
+        "14": "1988-12-31",
+        "15": "",
+        "markForImport": true,
+        "invalidRowAlreadyCounted": false,
+        "isInvalid": false,
+        "rowNum": "1"
+      },
+      {
+        "0": "Jon D Fasoli",
+        "1": "Account-dracula Inc.",
+        "2": "",
+        "3": "Accountantsarefunpeopletoo@yahoo.com",
+        "4": "555-5563",
+        "5": "555-556-9012",
+        "6": "555-5564",
+        "7": "http://www.account-draculainc.com",
+        "8": "123 Accounts Recievable",
+        "9": "Miami",
+        "10": "FL",
+        "11": "12345",
+        "12": "United States",
+        "13": "-9000",
+        "14": "2015-09-04",
+        "15": "",
+        "markForImport": true,
+        "invalidRowAlreadyCounted": false,
+        "isInvalid": false,
+        "rowNum": "9"
+      }
+    ],
+    "invalidRows": 0
+  },
+  "prefs": {
+    "isVendorOpeningBalanceImportEnabled": true,
+    "isCustomerTypesEnabled": true,
+    "isCustomerOpeningBalanceImportEnabled": true,
+    "isVendorSpecificTaxReportBasisEnabled": false,
+    "isAccountCategoryEnabled": false,
+    "isCustomerSpecificArAccountEnabled": false,
+    "displayStateAddress": true,
+    "isCustomerGSTINEnabled": false,
+    "isVendorSpecificAPAccountEnabled": false,
+    "isCustomerTaxCategoryTypeEnabled": false
+  }
+}
