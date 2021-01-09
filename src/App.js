@@ -8,7 +8,7 @@ import theme from "./theme";
 import AppRoutes from "./routes";
 import AuthProvider from "./context/auth/context";
 import CustomerProvider from "./context/customers/context";
-import { WS_URL } from "./constants";
+import { WS_URL } from "./utils/constants";
 
 const cable = ActionCable.createConsumer(WS_URL);
 

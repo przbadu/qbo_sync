@@ -6,7 +6,7 @@ import { AuthContext } from "../../context/auth/context";
 // images
 import QboIcon from "../../assets/qbo.png";
 import Img2 from "../../assets/img2.svg";
-import { API_URL } from "../../constants";
+import { API_URL } from "../../utils/constants";
 
 import "./Landing.css";
 
