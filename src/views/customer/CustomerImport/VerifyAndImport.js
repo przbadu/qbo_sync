@@ -34,7 +34,7 @@ const tableHeaders = [
   { name: "Website", label: "Website" },
   { name: "BillingAddressStreet", label: "Street" },
   { name: "BillingAddressCity", label: "City" },
-  { name: "BillingAddressState", label: "Province/Region/State" },
+  { name: "BillingAddressState", label: "Province / Region / State" },
   { name: "BillingAddressZip", label: "ZIP Code" },
   { name: "BillingAddressCountry", label: "Country" },
   { name: "OpeningBalance", label: "Opening Balance" },
