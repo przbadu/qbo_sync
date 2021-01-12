@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/qbo-sync/static/css/main.401a0e96.chunk.css",
+    "main.js": "/qbo-sync/static/js/main.7c02fb70.chunk.js",
+    "main.js.map": "/qbo-sync/static/js/main.7c02fb70.chunk.js.map",
+    "runtime-main.js": "/qbo-sync/static/js/runtime-main.987a9c89.js",
+    "runtime-main.js.map": "/qbo-sync/static/js/runtime-main.987a9c89.js.map",
+    "static/css/2.847a128f.chunk.css": "/qbo-sync/static/css/2.847a128f.chunk.css",
+    "static/js/2.8756d175.chunk.js": "/qbo-sync/static/js/2.8756d175.chunk.js",
+    "static/js/2.8756d175.chunk.js.map": "/qbo-sync/static/js/2.8756d175.chunk.js.map",
+    "static/js/3.e0eac903.chunk.js": "/qbo-sync/static/js/3.e0eac903.chunk.js",
+    "static/js/3.e0eac903.chunk.js.map": "/qbo-sync/static/js/3.e0eac903.chunk.js.map",
+    "index.html": "/qbo-sync/index.html",
+    "static/css/2.847a128f.chunk.css.map": "/qbo-sync/static/css/2.847a128f.chunk.css.map",
+    "static/css/main.401a0e96.chunk.css.map": "/qbo-sync/static/css/main.401a0e96.chunk.css.map",
+    "static/js/2.8756d175.chunk.js.LICENSE.txt": "/qbo-sync/static/js/2.8756d175.chunk.js.LICENSE.txt",
+    "static/media/404.5453c178.svg": "/qbo-sync/static/media/404.5453c178.svg",
+    "static/media/img2.4c2b113b.svg": "/qbo-sync/static/media/img2.4c2b113b.svg",
+    "static/media/loading.55d08ee5.svg": "/qbo-sync/static/media/loading.55d08ee5.svg",
+    "static/media/qbo.f4154305.png": "/qbo-sync/static/media/qbo.f4154305.png",
+    "static/media/unauthorized.a235471a.svg": "/qbo-sync/static/media/unauthorized.a235471a.svg",
+    "static/media/warning.4ce18fbb.svg": "/qbo-sync/static/media/warning.4ce18fbb.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.987a9c89.js",
+    "static/css/2.847a128f.chunk.css",
+    "static/js/2.8756d175.chunk.js",
+    "static/css/main.401a0e96.chunk.css",
+    "static/js/main.7c02fb70.chunk.js"
+  ]
+}
