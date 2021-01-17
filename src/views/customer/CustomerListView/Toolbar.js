@@ -47,7 +47,7 @@ const Toolbar = ({ className, ...rest }) => {
           <Button
             color="primary"
             variant="contained"
-            onClick={() => context.deleteSelectedCustomers}
+            onClick={() => context.deleteSelectedCustomers()}
             disabled={context.loading}
           >
             Make Inactive ({context.selectedCustomerIds.length})

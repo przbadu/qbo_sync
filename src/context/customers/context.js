@@ -37,7 +37,7 @@ const CustomerProvider = ({ children }) => {
     dispatch({ type: actionType.FETCHING_CUSTOMERS });
     try {
       const { data } = await Api().post("/customers/mark_inactive", {
-        ids: customers.ids,
+        ids: customers.selectedCustomerIds,
       });
       dispatch({ type: actionType.SET_DELETING_JOB_ID, payload: data.job_id });
     } catch (e) {
