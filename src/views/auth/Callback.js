@@ -40,8 +40,6 @@ const Callback = () => {
     } else {
       context.setAuthError();
     }
-
-    console.log(context);
   }, []);
 
   if (context.auth.error) return <Navigate to="/500" />;

@@ -103,7 +103,6 @@ const CustomerImport = () => {
   // find exact cell (row number, column number), and update its value with new value
   const updateCsvData = (rowIndex, columnIndex, newValue) =>
     setCsvData((prev) => {
-      console.log(rowIndex, columnIndex);
       let newItems = [...prev.items];
       newItems[rowIndex] = { ...newItems[rowIndex], [columnIndex]: newValue };
 

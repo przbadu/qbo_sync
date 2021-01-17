@@ -24,8 +24,6 @@ const CustomerListView = () => {
     context.fetchCustomers();
   }, []);
 
-  console.log(context.jobId, "jobid");
-
   return (
     <ActionCableConsumer
       channel={{ channel: "BackgroundJobChannel", room: context.jobId }}
